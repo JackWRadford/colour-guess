@@ -15,8 +15,8 @@ class MyDialogTextBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // width: 140,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: mediumPadding),
       child: GestureDetector(
         onTap: onTap,
         behavior: HitTestBehavior.opaque,

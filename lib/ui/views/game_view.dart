@@ -24,7 +24,7 @@ class GameView extends StatelessWidget {
         //     onPressed: () {},
         //     icon: const Icon(CupertinoIcons.chart_bar_circle_fill)),
         title: const Text(
-          'TODAY\'S COLOUR',
+          'GUESS THE COLOUR',
           style: textHeadline,
         ),
         // actions: [
@@ -94,6 +94,7 @@ class GameView extends StatelessWidget {
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
                     showDialog(
+                      barrierDismissible: false,
                       context: context,
                       builder: (context) => const ResultsDialog(),
                     );

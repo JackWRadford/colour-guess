@@ -18,25 +18,10 @@ class ResultsDialog extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(mediumRadius)),
       ),
-      title: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Text(
-            'RESULT',
-            style: textHeadline,
-            textAlign: TextAlign.center,
-          ),
-          // GestureDetector(
-          //   behavior: HitTestBehavior.opaque,
-          //   onTap: () {
-          //     Navigator.of(context).pop();
-          //   },
-          //   child: const Icon(
-          //     CupertinoIcons.xmark,
-          //   ),
-          // ),
-        ],
+      title: const Text(
+        'RESULT',
+        style: textHeadline,
+        textAlign: TextAlign.center,
       ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
