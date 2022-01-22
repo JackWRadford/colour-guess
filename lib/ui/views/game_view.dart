@@ -37,6 +37,23 @@ class GameView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
+            // FutureBuilder(
+            //     future: Provider.of<GameModel>(context, listen: false)
+            //         .getPlayedToday(),
+            //     builder: (_, snapshot) {
+            //       if (snapshot.hasData) {
+            //         if (snapshot.data == true) {
+            //           Future(() {
+            //             showDialog(
+            //               context: context,
+            //               builder: (context) => const ResultsDialog(),
+            //             );
+            //           });
+            //           return Container();
+            //         }
+            //       }
+            //       return Container();
+            //     }),
             //color card
             Expanded(
               child: Card(

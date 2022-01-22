@@ -45,6 +45,7 @@ class GameModel extends BaseModel {
 
   ///get best score
   Future<void> calcBestScore() async {
+    await _setPlayedToday();
     int currentBest = await _prefService.getBest();
     int score = getDifference();
     if (score < currentBest) {
@@ -98,5 +99,15 @@ class GameModel extends BaseModel {
     g = _getRand();
     b = _getRand();
     color = Color.fromARGB(255, r, g, b);
+  }
+
+  ///set played today
+  Future<void> _setPlayedToday() async {
+    await _prefService.setPlayedToday();
+  }
+
+  ///get played today
+  Future<bool> getPlayedToday() async {
+    return await _prefService.getPlayedToday();
   }
 }

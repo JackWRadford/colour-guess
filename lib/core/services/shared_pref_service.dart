@@ -22,4 +22,30 @@ class SharedPrefService {
     }
     return 1000;
   }
+
+  ///set played date
+  Future<void> setPlayedToday() async {
+    if (_prefs != null) {
+      await _prefs!.setString('playeddate', _getNow().toIso8601String());
+    }
+  }
+
+  ///get played today or not
+  Future<bool> getPlayedToday() async {
+    if (_prefs != null) {
+      String? dateStr = _prefs!.getString('playeddate');
+      if (dateStr != null) {
+        DateTime date = DateTime.parse(dateStr);
+        // DateTime day = DateTime(date.year, date.month, date.day);
+        return (_getNow() == date);
+      }
+    }
+    return false;
+  }
+
+  ///get dateTime for now (only year, month, day)
+  DateTime _getNow() {
+    DateTime now = DateTime.now();
+    return DateTime(now.year, now.month, now.day);
+  }
 }
