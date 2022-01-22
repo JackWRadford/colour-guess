@@ -1,3 +1,5 @@
+import 'package:colour_guess/core/locator.dart';
+import 'package:colour_guess/core/services/shared_pref_service.dart';
 import 'package:colour_guess/core/viewModels/game_view_model.dart';
 import 'package:colour_guess/ui/shared/app_themes.dart';
 import 'package:colour_guess/ui/views/game_view.dart';
@@ -5,8 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //initialize GetIt Locator
+  initLocator();
+
+  //initialize shrared preferences instance
+  await initSharedPrefs();
+
   runApp(const MyApp());
 }
 

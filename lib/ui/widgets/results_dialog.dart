@@ -53,7 +53,22 @@ class ResultsDialog extends StatelessWidget {
                 style: textFootnote,
               ),
               Text(
-                _gameModel.getDifference(),
+                _gameModel.getDifference().toString(),
+                style: textHeadline,
+              ),
+            ],
+          ),
+          UIHelper.verticalSpaceMedium(),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'Best',
+                style: textFootnote,
+              ),
+              Text(
+                _gameModel.bestScore.toString(),
                 style: textHeadline,
               ),
             ],

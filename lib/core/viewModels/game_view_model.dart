@@ -1,11 +1,16 @@
 import 'dart:math';
 import 'package:colour_guess/core/enums/rgb.dart';
 import 'package:colour_guess/core/enums/view_state.dart';
+import 'package:colour_guess/core/locator.dart';
 import 'package:colour_guess/core/viewModels/base_model.dart';
+import 'package:colour_guess/core/services/shared_pref_service.dart';
 import 'package:flutter/material.dart';
 
 ///viewModel for main game view
 class GameModel extends BaseModel {
+  ///inject shared preferences service
+  final SharedPrefService _prefService = locator<SharedPrefService>();
+
   ///current color rgb
   int r = 0;
   int g = 0;
@@ -23,6 +28,9 @@ class GameModel extends BaseModel {
   ///random number genrator
   final Random _random = Random();
 
+  ///best score
+  int bestScore = 1000;
+
   ///constructor
   GameModel() {
     _genColor();
@@ -35,9 +43,21 @@ class GameModel extends BaseModel {
     uB = 0;
   }
 
+  ///get best score
+  Future<void> calcBestScore() async {
+    int currentBest = await _prefService.getBest();
+    int score = getDifference();
+    if (score < currentBest) {
+      _prefService.setBest(score);
+      bestScore = score;
+    } else {
+      bestScore = currentBest;
+    }
+  }
+
   ///calculate difference between guess and color
-  String getDifference() {
-    return ((r - uR).abs() + (g - uG).abs() + (b - uB).abs()).toString();
+  int getDifference() {
+    return ((r - uR).abs() + (g - uG).abs() + (b - uB).abs());
   }
 
   ///get guess color

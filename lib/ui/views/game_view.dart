@@ -92,7 +92,9 @@ class GameView extends StatelessWidget {
                 //main button
                 GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: () {
+                  onTap: () async {
+                    await Provider.of<GameModel>(context, listen: false)
+                        .calcBestScore();
                     showDialog(
                       barrierDismissible: false,
                       context: context,
